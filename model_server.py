@@ -82,4 +82,6 @@ def predict():
         return jsonify({'error': 'File type not allowed'}), 400
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000, debug=True)
+    # Obtén el puerto de la variable de entorno de Render (o usa 10000 por defecto)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port, debug=False)
