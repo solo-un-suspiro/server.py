@@ -27,6 +27,7 @@ def allowed_file(filename):
 def detect_stars(img):
     # Implementa aquí la lógica de detección de estrellas
     # Este es un ejemplo simplificado, deberías reemplazarlo con tu lógica real
+    
     height, width = img.shape[:2]
     stars = {
         'fourPoint': [{'x': 0.2, 'y': 0.3, 'radius': 0.05}],
@@ -74,4 +75,6 @@ def predict():
         return jsonify({'error': 'File type not allowed'}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Configuración para Render: obtener el puerto desde la variable de entorno
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
